@@ -24,15 +24,15 @@ ensure_app() {
   fi
 }
 
-ensure_postgres() {
+ensure_database() {
   if heroku config:get DATABASE_URL -a "$APP_NAME" >/dev/null 2>&1 && \
      [[ -n "$(heroku config:get DATABASE_URL -a "$APP_NAME" 2>/dev/null || true)" ]]; then
     echo "DATABASE_URL already present"
     return
   fi
 
-  echo "Provisioning Heroku Postgres: $PG_PLAN"
-  heroku addons:create "$PG_PLAN" -a "$APP_NAME"
+  echo "Provisioning JawsDB..."
+  heroku addons:create jawsdb-maria:kitefin -a "$APP_NAME"
 }
 
 ensure_base_config() {
