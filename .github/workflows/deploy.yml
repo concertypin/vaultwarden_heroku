@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  AUTOBUS_ENABLE: 1
+  AUTOBUS_ENABLE: 0
   CREATE_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
   DUO_ENABLE: 1
   GIT_HASH: main
